@@ -8,6 +8,7 @@
  * @copyright Copyright (c) 2022
  * 
  */
+#pragma once
 
 #include <vector>
 
@@ -17,10 +18,14 @@ namespace zich{
     class Matrix{
 
         private:
+        std::vector<double> _vec;
+        unsigned int _rows;
+        unsigned int _columns;
 
         public:
-        
-        Matrix(std::vector<double> vec, int rows, int column);
+
+        Matrix(); /* Default ctor */
+        Matrix(std::vector<double> vec, unsigned long rows, unsigned long columns); /* Manual ctor */
 
         /* Arithmetic Operators */
         /* ---------------------------------------------------------- */
@@ -55,7 +60,7 @@ namespace zich{
          * @param Mat2 
          * @return Matrix 
          */
-        Matrix operator- (const Matrix &Mat2);
+        Matrix operator-(const Matrix &Mat2);
         /**
          * @brief overloading the -= operator to support subtriction of matrixes in the same manner as above.
          * just in a prettier way.
@@ -83,7 +88,7 @@ namespace zich{
          * @return true our_mat > mat2
          * @return false our_mat < mat2
          */
-        bool operator> (const Matrix &Mat2);
+        bool operator> (const Matrix &Mat2) const;
 
         /**
          * @brief Overloads the '>=' operator to support equality check between matrices.
@@ -92,7 +97,7 @@ namespace zich{
          * @return true our_mat >= mat2
          * @return false our_mat < mat2
          */
-        bool operator>= (const Matrix &Mat2);
+        bool operator>= (const Matrix &Mat2) const;
 
         /**
          * @brief overloads the '<' operator to support equality between matrices.
@@ -101,7 +106,7 @@ namespace zich{
          * @return true our_mat < mat2
          * @return false our_mat > mat2
          */
-        bool operator< (const Matrix &Mat2);
+        bool operator< (const Matrix &Mat2) const;
 
         /**
          * @brief Overloads the '<=' operator to support equality check between matrices.
@@ -110,7 +115,7 @@ namespace zich{
          * @return true our_mat <= mat2
          * @return false our_mat > mat2
          */
-        bool operator<= (const Matrix &Mat2);
+        bool operator<= (const Matrix &Mat2) const;
 
         /**
          * @brief overloads the '==' oeprator to check if the matrices are equal
@@ -119,7 +124,7 @@ namespace zich{
          * @return true our_mat == mat2
          * @return false our_mat != mat2 
          */
-        bool operator== (const Matrix &Mat2);
+        bool operator== (const Matrix &Mat2) const;
 
         /**
          * @brief overloads the '==' oeprator to check if the matrices are equal
@@ -128,7 +133,7 @@ namespace zich{
          * @return true our_mat == mat2
          * @return false our_mat != mat2 
          */
-        bool operator!= (const Matrix &Mat2);
+        bool operator!= (const Matrix &Mat2) const;
 
         /* ---------------------------------------------------------- */
 
@@ -208,9 +213,28 @@ namespace zich{
 
         /* ---------------------------------------------------------- */
 
-        /* I/O Operators */
-        friend ostream& operator<< (ostream& os, const Matrix& Mat);
-        friend ostream& operator>> (ostream& os, const Matrix& Mat);
+        /* I/O Operators */ // < fix this <
+        /* ---------------------------------------------------------- */
+
+        /**
+         * @brief override the operator '<<' which is the output operator cout
+         * 
+         * @param os 
+         * @param Mat 
+         * @return ostream& 
+         */
+        friend std::ostream& operator<< (std::ostream& os, const Matrix& Mat);
+
+        /**
+         * @brief override the operator '>>' which is the input operator cin.
+         * 
+         * @param os 
+         * @param Mat 
+         * @return ostream& 
+         */
+        friend std::istream& operator>> (std::istream& os, Matrix& Mat);
+
+        /* ---------------------------------------------------------- */
 
 
     };

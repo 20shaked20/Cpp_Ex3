@@ -15,10 +15,14 @@
 #include <string>
 #include <algorithm>
 
-
+using namespace zich;
 
 
 TEST_CASE("Negative Input") {
+    Matrix mat;
+    std::vector<double> test_v(10);
+    
+    CHECK_THROWS(Matrix mat(test_v, -10,-20));
 
 }
 // This might be not right >> check those tests
