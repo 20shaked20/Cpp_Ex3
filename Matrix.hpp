@@ -10,6 +10,7 @@
  */
 #pragma once
 
+#include <iostream>
 #include <vector>
 
 
@@ -19,13 +20,13 @@ namespace zich{
 
         private:
         std::vector<double> _vec;
-        unsigned int _rows;
-        unsigned int _columns;
+        int _rows;
+        int _columns;
 
         public:
 
         Matrix(); /* Default ctor */
-        Matrix(std::vector<double> vec, unsigned long rows, unsigned long columns); /* Manual ctor */
+        Matrix(std::vector<double> vec, int rows, int columns); /* Manual ctor */
 
         /* Arithmetic Operators */
         /* ---------------------------------------------------------- */
@@ -223,16 +224,16 @@ namespace zich{
          * @param Mat 
          * @return ostream& 
          */
-        friend std::ostream& operator<< (std::ostream& os, const Matrix& Mat);
+        friend std::ostream& operator<< (std::ostream& output, const Matrix& Mat);
 
         /**
          * @brief override the operator '>>' which is the input operator cin.
          * 
          * @param os 
          * @param Mat 
-         * @return ostream& 
+         * @return isstream& 
          */
-        friend std::istream& operator>> (std::istream& os, Matrix& Mat);
+        friend std::istream& operator>> (std::istream& input, Matrix& Mat);
 
         /* ---------------------------------------------------------- */
 
