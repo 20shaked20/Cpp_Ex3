@@ -524,12 +524,14 @@ std::istream& zich::operator>>(std::istream& is, zich::Matrix& Mat){
         if(isdigit(input[i])!=0){
             str_to_double = input[i] -'0';
             x = i+1;
-            while(input[x]!=' ' && x<input.length()){   /* if there's a number larger than one digit */
-                str_to_double *= ten + input[x] - '0';
+            while((input[x]!=' ' && input[x]!=']') && x<input.length()){   /* if there's a number larger than one digit */
+                str_to_double *= (ten);
+                str_to_double += input[x] - '0';
                 ++x;
             }
+            i = x; /*returns i to be the x-1 in case it was moved */
+            std::cout<< str_to_double <<", ";
             new_vec.at(z) = str_to_double;
-            std::cout<< new_vec.at(z) <<", ";
             ++z;
         } 
         else{/*Skip non number values */
